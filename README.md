@@ -1,176 +1,85 @@
-<div align="center">
+# Complete GO ON
 
-# Haptix 🖐️⚡
+One SillyTavern extension and one Windows desktop app. Both speak the same Lovense command: `Thrusting` for speed and `Stroke:MIN-MAX` for the stroke window.
 
-### *Greetings, dragon slayers and rescuers of fair maids.*
+The extension also keeps the Haptix LELO Bluetooth path. Solace Pro stays on Lovense Remote. LELO stays on Web Bluetooth.
 
-[![tests](https://github.com/OlafBerserker/Haptix/actions/workflows/ci.yml/badge.svg)](https://github.com/OlafBerserker/Haptix/actions/workflows/ci.yml)
-[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![status: EARLY](https://img.shields.io/badge/status-EARLY%20(expect%20bugs)-orange.svg)](#its-early-okay)
-[![hardware](https://img.shields.io/badge/devices-1%20tested%2C%20infinite%20hope-ff69b4.svg)](#supported-devices)
+## What is in the box
 
-**`v0.2` — Beta: *Priapistic Gooner***
+- **Lovense Remote.** Tags such as `<lovense:thrusting="10" time="5"/>` and `<lovense:combo thrusting="10" stroke="20-90"/>`, a queue with Pause and Play, and STOP. If a reply has no tag, the Haptix scene classifier can drive speed and a conservative stroke window. A tag in the same reply wins.
+- **LELO Bluetooth.** The original Haptix connector, safety gate, sequences, and scene classifier. Stroke length is not simulated on LELO.
+- **Panel.** Host and port, drive mode (tags, scene, or tags then scene), speed, stroke window, shared patterns, consent, Arm, and STOP. Panel modes: compact, stop button only, hidden.
+- **Desktop app** in `desktop/`. Xbox controller via XInput, remapping, the same six patterns, and the same action string. It does not need the browser to be focused. If both run, the last command wins.
 
-![Haptix](assets/hero.png)
+Nothing moves until the toy is connected, consent is ticked, and the session is armed. Esc and the red STOP clear the queue and ignore the rest of that reply.
 
-</div>
+## Install the extension
 
-Are you the kind of adventurer who tends to whip out **more than your sword** on occasion? Do you own a fairly advanced adult toy with Bluetooth pairing? Well, well, well. **Do read on.**
+`main` on this fork is still the untouched Haptix snapshot. Install this branch:
 
-**Haptix** is a [SillyTavern](https://github.com/SillyTavern/SillyTavern) extension that lets the characters in your story **physically reach through the fourth wall** and into your choice of Bluetooth haptic device. You know — a gamepad or something. Or maybe that LELO F1S V3 personal "hygiene" device of yours that arrived in *discreet packaging.*
-
-How does it work? The AI writes *"she runs her hand down your thigh,"* and — by the unholy union of Web Bluetooth and some genuinely questionable choices on my part regarding the expenditure of my free time — **something actually happens.**
-
----
-
-## <a name="its-early-okay"></a>⚠️ It's EARLY, okay
-
-This is an **early release.** Expect bugs. Instead of **rage-gooning**, kindly [report them](https://github.com/OlafBerserker/Haptix/issues) so I can do something about it. I promise I will read every issue with the grave seriousness this project does not deserve.
-
----
-
-## What it actually does (the technical approach, in a nutshell)
-
-- **Scene recognition.** *Is the user being touched somewhere the toy happens to be, in a pleasant way?* Haptix reads each AI message, works out **what's happening** and **how fast**, and drives the motor to match. A slow caress is a slow caress. "Full speed" is now a private matter between you and physics. There's a strict **contact gate** so the toy fires when a hand actually lands on you — not when she "traces a pattern in the air." (Atmospheric prose firing the motor was, briefly, a real bug. It is now a tested one.)
-- **The device's own sensors.** *Is there a pencil jammed in your toy, or are you just happy to see me?* The built-in motion sensors estimate your, ah, **enthusiasm** and quietly fold it into the character's context — so she **notices, and reacts.** There is no hiding from a Bluetooth narc.
-- **Manual override.** For those who tinker with the **+ / −** buttons mid-scene: the LLM interprets it as you **cueing the character** ("ease up," "a little faster," "that's too much teeth, milady") and transcribes it into the story. The toy is now a co-author. It will not be credited. It cannot read.
-- **Gyroscopes.** Because if you **hold it up**, I'm telling the character. No holding until they say *"yes, thank you, you may hold it in front of me."* (The hint politely shuts up the instant things become, shall we say, **hands-on.**)
-
-Plus the features I built instead of sleeping:
-
-- **4 intensity modes** — Mild / Standard / Harsh / **Auto**, where Auto sizes the baseline from the **character's** physique. A dainty elf and a nine-foot barbarian should not hit identically. The curves are perceptually spaced, because "fast" felt limp and "frantic" tried to achieve orbit.
-- **Autonomous sequences** — build-up, wave, pulse, throb, **edging**, organic, fireworks, and an **arousal-reactive auto-edge** that backs off at precisely the wrong moment. On purpose. You're welcome. / I'm sorry.
-- **Two-toy mode** for power users (one scene, two devices — use your imagination, you clearly have one), **per-character calibration that's remembered**, settings that **persist**, and a tasteful little buzz for incidental "you got bumped in a crowd" contact.
-- **Game controllers too** — DualSense / Xbox / most rumble pads, via the Gamepad API. No pairing, no permission prompt, no judgement.
-
----
-
-<div align="center">
-
-### The whole interface, freshly iconified
-
-<table>
-<tr>
-<td align="center"><img src="assets/launcher-heart.png" width="54"><br><sub>Launcher</sub></td>
-<td align="center"><img src="assets/icon-connect.png" width="54"><br><sub>Connect</sub></td>
-<td align="center"><img src="assets/icon-disconnect.png" width="54"><br><sub>Disconnect</sub></td>
-<td align="center"><img src="assets/icon-arm.png" width="54"><br><sub>Arm</sub></td>
-<td align="center"><img src="assets/icon-estop.png" width="54"><br><sub>STOP</sub></td>
-<td align="center"><img src="assets/icon-test.png" width="54"><br><sub>Test</sub></td>
-</tr>
-<tr>
-<td align="center"><img src="assets/icon-intensity.png" width="54"><br><sub>Intensity</sub></td>
-<td align="center"><img src="assets/icon-sequence.png" width="54"><br><sub>Sequence</sub></td>
-<td align="center"><img src="assets/icon-pattern.png" width="54"><br><sub>Pattern</sub></td>
-<td align="center"><img src="assets/icon-calibrate.png" width="54"><br><sub>Calibrate</sub></td>
-<td align="center"><img src="assets/icon-arousal.png" width="54"><br><sub>Arousal</sub></td>
-<td align="center"><img src="assets/icon-device.png" width="54"><br><sub>Device</sub></td>
-</tr>
-</table>
-</tr>
-</tr>
-<td align="center"><img src="assets/interface.png" width="200"><br><sub></td>
-</div>
-
----
-
-## Supported devices
-
-| Device | Status |
-|---|---|
-| **LELO F1S V3** (Harmony protocol) | ✅ Tested on actual hardware by an actual coward |
-| **LELO F1S / F1S V2** (classic) | 🟢 Should work — same family, protocol auto-detected |
-| **LELO Harmony line** (Tiani, Ida Wave, Hugo 2, Gigi 3, Tor 3, F2s, Switch, Sona 3 Cruise…) | 🟡 Auto-detected, **untested** |
-| **Lovense / We-Vibe / Magic Motion / Satisfyer / Kiiroo** | 🧪 Experimental presets, **untested** — byte-bounded but unverified on real hardware |
-| **Game controllers** (DualSense / Xbox / XInput pads) | 🎮 Rumble, no pairing needed |
-
-Haptix sniffs out the right command protocol on connect. If your device misbehaves, the panel has a manual override and a **very large red button.**
-
----
-
-## Install
-
-**The easy way (SillyTavern UI):**
-1. SillyTavern → **Extensions** → **Install Extension**.
-2. Paste: `https://github.com/OlafBerserker/Haptix`
-3. Reload. A 💗 button appears bottom-left.
-
-**The script way:** run the installer for your OS from [`install/`](install/) — it drops Haptix into your SillyTavern `third-party` extensions folder.
-
-**Browser note:** Web Bluetooth needs **Chrome or Edge** and a **secure context** — open SillyTavern at `http://localhost` / `http://127.0.0.1` (loopback counts) or over HTTPS. A plain LAN IP will *not* count as secure and the toy will simply sit there, judging you. Browser rule, not me being difficult.
-
----
-
-## Using it
-
-1. 💗 launcher → **Connect device** → pick your toy → press its **power button** when asked.
-2. Tick **consent** → **Arm.** (Off by default. We are aggressively consent-forward, even with the gyroscope jokes.)
-3. Adventure. Or hit **Test** with an act + pace, **Set Full Arousal Point** to calibrate the meter, and cycle **Intensity** / **Sequence** to taste.
-4. **STOP** is always one click (or **Esc**) away. Tab away and it relaxes to zero on its own, like a gentleman.
-
----
-
-## Safety & consent (the one bit I'm not joking in)
-
-- **Off by default.** Nothing actuates until you connect *and* tick consent *and* press Arm — every session.
-- **Always-visible emergency STOP**, an `Esc` hotkey, an inactivity dead-man auto-stop, a hard intensity cap, oscillation-rate limiting, and ramp limiting so nothing ever lurches.
-- **Any uncertainty resolves to motor-off.** Disconnect, exception, NaN, lost heartbeat, hidden tab → zero. Fail-safe, not fail-spicy.
-- It's a motor, on your body. Start low, you can always go up, and listen to your body over my software.
-
----
-
-## Tested
-
-Yes. Genuinely. This ridiculous thing has a **CI pipeline,** and I would like that on the record.
-
-[![tests](https://github.com/OlafBerserker/Haptix/actions/workflows/ci.yml/badge.svg)](https://github.com/OlafBerserker/Haptix/actions/workflows/ci.yml)
-
-```
-$ npm test
-Haptix edge-case harness:  51 passed, 0 failed
-Haptix integration:        12 passed, 0 failed
+```text
+git clone -b Complete_GO_ON_Main https://github.com/mccrypt1/Haptix_Go_on_more
 ```
 
-Two hardware-free, fully deterministic suites run on every push (and locally via `npm test`):
+Put that folder in SillyTavern's `data/default-user/extensions/third-party/`.
 
-- **Edge-case harness** (`test/edge.test.mjs`, 51 checks) — the safety-critical layer, pinned in code so a refactor can't silently unbound it: safety-gate clamps (NaN / Infinity / negative / over-cap → 0), ramp + oscillation limits, dead-man + heartbeat watchdogs; motor-command encoders (every byte stays in range for **any** input); pattern sequences + the actuator waveform envelope (amplitude provably in `[0,1]` — no motor overdrive); the classifier's **contact gate** (atmosphere does **not** fire the motor — the cardinal sin); the LLM-reply parser (code-fences, prose, contradictions, garbage → safe); and sensor decode + config integrity.
-- **Integration** (`test/integration.test.mjs`, 12 checks) — boots the controller against a mocked browser + LLM and drives full **message → classify → actuate** flows: the LLM contact path, the regex fallback, the no-misfire guard, and the consent gate (disarmed = nothing moves, period).
+Then:
 
-No device and no LLM needed to run those two — the only dignified way to test this. There's also an **opt-in live test** (`test/live/classifier-live.mjs`) that fires the *real* classifier prompt at a running LLM across 18 adversarial messages (metaphor, dialogue, hypotheticals, broken grammar, every act). Last run: **18/18, zero misfires** — atmosphere never moved the motor.
+1. In `config.yaml`, set `enableServerPlugins: true`.
+2. Copy `server/lovense.mjs`, `server/lovense-guard.mjs`, and `server/lovense-action.mjs` into SillyTavern's `plugins/` folder. They have to sit side by side.
+3. Restart SillyTavern. The console should say `Lovense Control server plugin loaded successfully`.
+4. Start Lovense Remote on the PC, or Game Mode on the phone. Connect the toy. In the panel choose Lovense, enter the host and port shown by the app, and press Check connection.
+5. Tick consent and press Arm.
 
----
+`auto_update` is off. SillyTavern's updater would otherwise pull `main`, which is not this product. Turn updates on only after this branch is the default branch.
 
-## Privacy
+Web Bluetooth for LELO needs Chrome or Edge on `localhost` or HTTPS. Lovense Remote does not need Web Bluetooth.
 
-Free software, **for entertainment only, completely offline and private.** No cloud, no telemetry, no analytics, no accounts. Haptix talks to your browser and your toy and **nobody else.** What happens in your trousers stays in your trousers — I genuinely cannot see it and have deliberately built nothing that could.
+## Desktop app
 
----
+Windows 10 or 11, an XInput controller, and Python 3.8 or newer if you run the script. From `desktop/`:
 
-## Want your toy supported, or got ideas? 💌
+```text
+python xbox_to_lovense.py
+```
 
-The supported list is short because **I can only build (and trust) what I can actually test,** and my drawer of devices is tragically small.
+`start.bat` does the same. `build_exe.bat` builds `XboxToLovense.exe`. The exe looks for `patterns.json` beside itself, then for `shared/patterns.json` in this repo. The first run writes `config.json` next to the script or exe.
 
-- **Device not listed?** [Open an issue](https://github.com/OlafBerserker/Haptix/issues) and tell me exactly what you've got.
-- **Really** want it supported? **Send me one — brand-new, factory-sealed, fresh from the manufacturer, still in the shrink-wrap.** For the love of all that is hygienic: **NOT your actual, well-loved toy.** A *new-in-box* unit, which I will then study with test tubes and other Serious Scientific Gear. Your gadget gets Officially Supported™ and immortalized in the changelog.
-- **Or** fork the code and make it work yourself, you neckbearded king.
-- I'm also after **ideas to push some toys further** — if you know your device speaks a richer protocol, tell me.
+The action rules live in `desktop/lovense_action.py` and match `shared/lovense-action.mjs`. Both are checked against `shared/action-vectors.json`.
 
-No toy too weird. (Okay — *some* toys too weird. Send them anyway.)
+## Safety notes
 
----
+The Lovense plugin is not an open proxy. It ignores any `url` in the request and only posts to `/command` on an IPv4 host or a single-label `*.lovense.club` name, and only on ports 20000-20099 or 30000-30099. Link-local addresses, including cloud metadata, are refused. Redirects are not followed. TLS certificate checks are relaxed only after that allowlist passes, because Lovense Remote uses its own certificate.
 
-## Disclaimer
+That still means a logged-in SillyTavern session can send a Lovense command to any allowed address and port. The plugin does not know whether the panel session is armed. Arm, STOP, and the hidden-tab stop are enforced in the extension and the desktop app.
 
-Not affiliated with, endorsed by, or blessed by LELO or any device maker. Protocol details are interoperability facts re-implemented from public sources. It **shouldn't** break your toys or your "gear" — but if it does, it is somehow your fault, because I said so. Use at your own risk, and possibly your own delight. No warranty, express or implied, including fitness for *that* particular purpose.
+Other limits:
 
-## License
+- Speed, stroke, presets, and pattern text are rebuilt from numbers. Extra text in a tag or pattern does not become part of the command.
+- Toy names shown in the panel and written into the prompt are reduced to letters, numbers, spaces, and hyphens.
+- A hidden browser tab and a disarmed session do not start output. STOP still can.
+- The desktop app never shells out to the host you type. It only opens the allowlisted command URL, and it does not follow redirects.
+- There is no telemetry and no extra package install. The extension is plain JavaScript. The desktop app is the Python standard library.
 
-[MIT](LICENSE) — do whatever, just don't blame me.
+Known leftovers:
 
----
+- A public IP in the Lovense port band is allowed, because a phone running Game Mode is not always on a private address.
+- Lovense Remote is command-only. The desktop motion view reconstructs the stroke. It is not a position reading. LELO sensor feedback stays on the Bluetooth path.
+- The extension and the desktop app do not share a live session.
+- The panel still loads the Haptix display fonts from Google Fonts.
 
-<div align="center">
+## Develop
 
-*Made with caffeine, Web Bluetooth, 59 passing tests, and choices I stand by exactly as much as I'm low-key ashamed of them.*
+```text
+npm test
+```
 
-</div>
+That runs the Haptix edge and integration harnesses, the GO ON checks, and the Python action mirror. No toy and no LLM are required.
+
+## Credit
+
+- Haptix (LELO Bluetooth, scene classifier, consent gate, panel): OlafBerserker, MIT. https://github.com/OlafBerserker/Haptix
+- Lovense SillyTavern extension this Solace path grew from: Marinara, https://github.com/SpicyMarinara/SillyTavern-Lovense
+- Solace Pro commands, live panel, and Xbox app: mccrypt1
+
+Not affiliated with Lovense or LELO. For adults. Use at your own risk.

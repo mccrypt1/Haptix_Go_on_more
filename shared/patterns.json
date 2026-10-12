@@ -1,0 +1,60 @@
+[
+  {
+    "name": "Slow Deep",
+    "steps": [
+      { "speed": 5, "stroke": [0, 100], "sec": 5 },
+      { "speed": 7, "stroke": [0, 100], "sec": 5 },
+      { "speed": 6, "stroke": [10, 95], "sec": 4 }
+    ]
+  },
+  {
+    "name": "Fast Shallow",
+    "steps": [
+      { "speed": 15, "stroke": [60, 100], "sec": 4 },
+      { "speed": 18, "stroke": [65, 100], "sec": 3 },
+      { "speed": 13, "stroke": [55, 95], "sec": 4 }
+    ]
+  },
+  {
+    "name": "Ramp Up",
+    "steps": [
+      { "speed": 4, "stroke": [0, 100], "sec": 4 },
+      { "speed": 7, "stroke": [0, 100], "sec": 4 },
+      { "speed": 10, "stroke": [0, 100], "sec": 4 },
+      { "speed": 13, "stroke": [0, 100], "sec": 4 },
+      { "speed": 16, "stroke": [0, 100], "sec": 4 },
+      { "speed": 19, "stroke": [0, 100], "sec": 5 }
+    ]
+  },
+  {
+    "name": "Waves",
+    "steps": [
+      { "speed": 5, "stroke": [20, 80], "sec": 3 },
+      { "speed": 9, "stroke": [10, 90], "sec": 3 },
+      { "speed": 13, "stroke": [0, 100], "sec": 4 },
+      { "speed": 9, "stroke": [10, 90], "sec": 3 },
+      { "speed": 5, "stroke": [20, 80], "sec": 3 }
+    ]
+  },
+  {
+    "name": "Tease",
+    "steps": [
+      { "speed": 12, "stroke": [20, 90], "sec": 2.5 },
+      { "speed": 0, "stroke": [20, 90], "sec": 2 },
+      { "speed": 15, "stroke": [30, 100], "sec": 1.5 },
+      { "speed": 0, "stroke": [30, 100], "sec": 2.5 },
+      { "speed": 8, "stroke": [0, 70], "sec": 3 },
+      { "speed": 0, "stroke": [0, 70], "sec": 1.5 }
+    ]
+  },
+  {
+    "name": "Edge",
+    "steps": [
+      { "speed": 8, "stroke": [0, 100], "sec": 8 },
+      { "speed": 12, "stroke": [0, 100], "sec": 6 },
+      { "speed": 16, "stroke": [0, 100], "sec": 5 },
+      { "speed": 19, "stroke": [0, 100], "sec": 3 },
+      { "speed": 2, "stroke": [0, 100], "sec": 5 }
+    ]
+  }
+]

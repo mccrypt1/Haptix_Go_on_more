@@ -2,7 +2,7 @@ name: tests
 
 on:
   push:
-    branches: [main]
+    branches: [main, Complete_GO_ON_Main]
   pull_request:
   workflow_dispatch:
 
@@ -19,3 +19,7 @@ jobs:
         run: node test/edge.test.mjs
       - name: Integration (message -> classify -> actuate, mocked browser + LLM)
         run: node test/integration.test.mjs
+      - name: GO ON action, proxy, and consent checks
+        run: node test/goon.test.mjs && node test/goon-core.test.mjs
+      - name: Desktop action mirror
+        run: python3 test/desktop-action.py

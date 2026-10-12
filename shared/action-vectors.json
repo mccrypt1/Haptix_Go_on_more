@@ -1,0 +1,42 @@
+{
+  "actions": [
+    { "speed": 12, "strokeMin": 20, "strokeMax": 80, "action": "Thrusting:12,Stroke:20-80" },
+    { "speed": 0, "strokeMin": 0, "strokeMax": 100, "action": "Stop" },
+    { "speed": 99, "strokeMin": 90, "strokeMax": 95, "action": "Thrusting:20,Stroke:80-100" },
+    { "speed": -4, "strokeMin": 0, "strokeMax": 10, "action": "Stop" },
+    { "speed": 3.6, "strokeMin": 100, "strokeMax": 0, "action": "Thrusting:4,Stroke:0-100" }
+  ],
+  "rejectedActions": [
+    "Thrusting:12;Stop",
+    "Thrusting:12\nStop",
+    "Vibrate:1,Preset:pulse",
+    "Thrusting:12,Stroke:1-2,Stop"
+  ],
+  "acceptedActions": [
+    { "in": "Stop", "out": "Stop" },
+    { "in": "Thrusting:12,Stroke:20-80", "out": "Thrusting:12,Stroke:20-80" },
+    { "in": "Vibrate:25", "out": "Vibrate:20" },
+    { "in": "Pump:9", "out": "Pump:3" },
+    { "in": "Stroke:90-95", "out": "Stroke:80-100" },
+    { "in": "Stroke:10-10", "out": "Stroke:10-30" }
+  ],
+  "hosts": [
+    { "host": "127.0.0.1", "port": 30010, "ok": true },
+    { "host": "192.168.1.44", "port": 20010, "ok": true },
+    { "host": "192-168-1-44.lovense.club", "port": 30010, "ok": true },
+    { "host": "10.0.0.8", "port": 20099, "ok": true },
+    { "host": "8.8.8.8", "port": 30000, "ok": true },
+    { "host": "169.254.169.254", "port": 30010, "ok": false },
+    { "host": "169.254.1.1", "port": 20010, "ok": false },
+    { "host": "0.0.0.0", "port": 30010, "ok": false },
+    { "host": "127.0.0.1", "port": 22, "ok": false },
+    { "host": "127.0.0.1", "port": 443, "ok": false },
+    { "host": "evil.com", "port": 30010, "ok": false },
+    { "host": "evil.lovense.club.attacker.com", "port": 30010, "ok": false },
+    { "host": "127.0.0.1.lovense.club", "port": 30010, "ok": false },
+    { "host": "0177.0.0.1", "port": 30010, "ok": false },
+    { "host": "127.0.0.1@evil.com", "port": 30010, "ok": false },
+    { "host": "metadata.google.internal", "port": 30010, "ok": false },
+    { "host": "224.0.0.1", "port": 30010, "ok": false }
+  ]
+}

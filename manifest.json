@@ -1,12 +1,12 @@
 {
-    "display_name": "Haptix",
+    "display_name": "Complete GO ON",
     "loading_order": 100,
     "requires": [],
     "optional": [],
     "js": "index.js",
     "css": "style.css",
-    "author": "OlafBerserker",
-    "version": "0.2.3",
-    "auto_update": true,
-    "homePage": "https://github.com/OlafBerserker/Haptix"
+    "author": "mccrypt1",
+    "version": "1.0.0",
+    "auto_update": false,
+    "homePage": "https://github.com/mccrypt1/Haptix_Go_on_more"
 }

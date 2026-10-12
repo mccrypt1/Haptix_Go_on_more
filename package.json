@@ -1,11 +1,11 @@
 {
-    "name": "haptix",
-    "version": "0.2.3",
-    "description": "Bring-your-own-haptics for SillyTavern. The scene moves, so do you.",
+    "name": "complete-go-on",
+    "version": "1.0.0",
+    "description": "SillyTavern control for Lovense Remote and LELO Bluetooth, plus an Xbox desktop companion.",
     "type": "module",
     "private": true,
     "scripts": {
-        "test": "node test/edge.test.mjs"
+        "test": "node test/edge.test.mjs && node test/integration.test.mjs && node test/goon.test.mjs && node test/goon-core.test.mjs && python test/desktop-action.py"
     },
     "license": "MIT"
 }

@@ -1,5 +1,5 @@
 /**
- * Haptix — SillyTavern extension entry point.
+ * Haptix / Complete GO ON — SillyTavern extension entry point.
  *
  * A standalone add-on that drives a LELO Bluetooth device from the story: the scene's act + pace shape the
  * motor pattern, the device's sensors feed an arousal estimate back into the LLM, and manual nudges get
@@ -27,8 +27,13 @@ function boot() {
         if (c?.SlashCommandParser?.addCommandObject && c?.SlashCommand?.fromProps) {
             c.SlashCommandParser.addCommandObject(c.SlashCommand.fromProps({
                 name: 'haptix',
-                callback: () => { toggleHapticPanel(); return 'Haptix panel toggled.'; },
-                helpString: 'Toggle the Haptix haptic control panel.',
+                callback: () => { toggleHapticPanel(); return 'GO ON panel toggled.'; },
+                helpString: 'Toggle the Complete GO ON control panel.',
+            }));
+            c.SlashCommandParser.addCommandObject(c.SlashCommand.fromProps({
+                name: 'goon',
+                callback: () => { toggleHapticPanel(); return 'GO ON panel toggled.'; },
+                helpString: 'Toggle the Complete GO ON control panel.',
             }));
         }
     } catch { /* slash command optional */ }
